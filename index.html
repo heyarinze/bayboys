@@ -171,8 +171,23 @@
       <p class="eyebrow">The monthly letter</p>
       <h2 class="h2">One email a month</h2>
       <p>The Book of the Month, the next conversation guide, and new picks for the shelf across all six themes, fiction and non-fiction.</p>
-      <!-- NEWSLETTER: replace this line with your sign-up embed or link -->
-      <p class="note">Sign-up opens soon.</p>
+      <p>The table is small, but the letter is open to anyone. Can't make brunch? Sign up and read along.</p>
+      <!-- NEWSLETTER: posts to a Google Form. The action URL and the two
+           entry.* names come from that form; responses land in its Sheet. -->
+      <form class="signup" id="signup" method="POST" target="signup-sink"
+            action="https://docs.google.com/forms/d/e/FORM_ID/formResponse">
+        <label class="field">
+          <span>Name</span>
+          <input type="text" name="entry.NAME_ID" autocomplete="given-name" required>
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input type="email" name="entry.EMAIL_ID" autocomplete="email" inputmode="email" required>
+        </label>
+        <button type="submit">Get the letter</button>
+        <p class="note" role="status" aria-live="polite" hidden></p>
+      </form>
+      <iframe name="signup-sink" title="" hidden></iframe>
     </section>
     <section id="seat">
       <p class="eyebrow">Getting a seat</p>
@@ -193,6 +208,41 @@
     <span>Started by Arinze O., after Sunday High Table in Nairobi</span>
   </div>
 </footer>
+
+<script>
+  // Google Forms sends no CORS headers, so the form posts into a hidden
+  // iframe; its load event is the signal that the response went through.
+  (function () {
+    var form = document.getElementById('signup');
+    var sink = document.querySelector('iframe[name="signup-sink"]');
+    var status = form.querySelector('[role="status"]');
+    var button = form.querySelector('button');
+    var sent = false;
+
+    // Until the real Google Form ID is filled in, show the form but keep it off.
+    if (form.action.indexOf('FORM_ID') !== -1) {
+      form.querySelectorAll('input, button').forEach(function (el) { el.disabled = true; });
+      status.textContent = 'Sign-up opens soon.';
+      status.hidden = false;
+      return;
+    }
+
+    form.addEventListener('submit', function () {
+      sent = true;
+      button.disabled = true;
+      button.textContent = 'Sending…';
+    });
+    sink.addEventListener('load', function () {
+      if (!sent) return;
+      sent = false;
+      form.reset();
+      button.disabled = false;
+      button.textContent = 'Get the letter';
+      status.textContent = "You're on the list. The next letter comes before the next brunch.";
+      status.hidden = false;
+    });
+  })();
+</script>
 
 </body>
 </html>
