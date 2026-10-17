@@ -1,0 +1,14 @@
+---
+layout: base.njk
+pagination:
+  data: sections
+  size: 1
+  alias: section
+permalink: "/journal/section/{{ section.slug }}/"
+listEyebrow: Journal
+eleventyComputed:
+  title: "{{ section.name }}"
+  listTitle: "{{ section.name }}"
+---
+{% set posts = collections.journal | inSection(section.slug) %}
+{% include "story-list.njk" %}

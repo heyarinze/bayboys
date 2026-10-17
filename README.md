@@ -1,39 +1,58 @@
 # Bay Boys Book Brunch
 
-A one-page static site. No build step, no dependencies.
+The site at [boysbookbrunch.com](https://www.boysbookbrunch.com): a homepage and a journal of stories. It's built with [Eleventy](https://www.11ty.dev), and Vercel rebuilds and publishes it on every push to `main`.
 
 ```
-index.html            the page
-styles.css            all styling (light and dark follow the visitor's system)
+index.html            the homepage (monthly blocks are marked UPDATE MONTHLY)
+journal/posts/        journal stories, one Markdown file each
+journal/index.njk     the journal front page
+journal/section.njk   one page per section (Masculinity, Health, ...)
+_includes/            shared page shell, story layout and story card
+_data/                site name and address, and the list of sections
+styles.css            all styling
+images/journal/       images uploaded with stories
 logo.png              the Boys Book Brunch logo, shown in the hero
 logo-mark.png         the logo's B on its own: header mark and high-res tab icon
 favicon.ico           browser tab icon (16, 32 and 48 px, the B on its own)
 apple-touch-icon.png  iPhone and iPad home-screen icon (the full logo)
-og.png                link-preview image for WhatsApp, iMessage, X, LinkedIn
+og.png                default link-preview image; a story uses its own cover
+.pages.yml            settings for the web editor (fields, sections, image folder)
+eleventy.config.js    build settings
+vercel.json           tells Vercel to run the build and serve _site/
 ```
 
-To preview locally, open `index.html` in a browser.
+## Publishing a story
 
-## Deploy to Vercel
+Stories are written in [Pages CMS](https://pagescms.org), a free web editor that saves straight to this GitHub repo.
 
-**From GitHub (recommended, so every push redeploys)**
+**One-time setup**
 
-1. Create a new GitHub repo and add these files at its root.
-2. Go to vercel.com/new and import the repo.
-3. Framework preset: **Other**. Leave the build command and output directory empty.
-4. Click **Deploy**.
+1. Go to [app.pagescms.org](https://app.pagescms.org) and sign in with GitHub.
+2. When it asks, install Pages CMS on your GitHub account and give it access to only the `bayboys` repository.
+3. Open `bayboys`. **Journal** appears in the sidebar.
 
-**From your terminal**
+**Each story**
+
+1. In **Journal**, add an entry.
+2. Fill in the headline, standfirst, section, author, date, and cover image with its description, then write the story.
+3. Leave **Draft** on while you work. Saving a draft keeps it off the site.
+4. When it's ready, switch **Draft** off and save. It's live about a minute later.
+
+Good to know:
+
+- Every save is a commit to `main`, and every commit to `main` redeploys the site.
+- A story's address is `/journal/` plus its headline, for example `/journal/the-will-to-change/`, so two stories can't share a headline.
+- Keep cover images under about 1 MB. Landscape works best.
+- To add or rename a section, change both `_data/sections.js` and the section list in `.pages.yml`.
+
+## Previewing on your computer
 
 ```
-cd bay-boys-book-brunch
-npx vercel          # first deploy, answer the setup prompts
-npx vercel --prod   # publish to production
+npm install
+npm start
 ```
 
-**Link previews:** the `og:url` and `og:image` tags in `index.html` point at `https://www.boysbookbrunch.com`. If the domain changes, update both; previews need the full address.
-
-To use your own domain, add it in the Vercel project under Settings → Domains.
+Then open http://localhost:8080. Drafts show up here, but never on the live site.
 
 ## Monthly update
 
@@ -46,4 +65,8 @@ Add new picks to **The shelf** by copying an existing `<li>` inside a theme.
 
 ## Newsletter
 
-Search for `NEWSLETTER` in `index.html`. Replace the "Sign-up opens soon" line with your provider's embed code or a link to the sign-up page.
+Search for `NEWSLETTER` in `index.html`. The sign-up form posts to a Google Form: replace `FORM_ID` in the form's `action`, and `entry.NAME_ID` and `entry.EMAIL_ID` with that form's field IDs. Until then the form shows "Sign-up opens soon."
+
+## Link previews
+
+The `og:url` and `og:image` tags point at `https://www.boysbookbrunch.com` (set in `_data/site.json`). If the domain changes, update it there.

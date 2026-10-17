@@ -1,0 +1,25 @@
+---
+layout: base.njk
+---
+<article class="story">
+  <header class="wrap story-head">
+    <p class="kicker"><a href="/journal/section/{{ section }}/">{{ section | sectionName }}</a></p>
+    <h1 class="story-title">{{ title }}</h1>
+    {% if standfirst %}<p class="standfirst">{{ standfirst }}</p>{% endif %}
+    <p class="byline">{% if author %}By {{ author }} · {% endif %}<time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time></p>
+  </header>
+  {% if cover %}
+  <figure class="wrap story-cover">
+    <img src="{{ cover }}" alt="{{ cover_alt }}">
+  </figure>
+  {% endif %}
+  <div class="wrap">
+    <div class="story-body">
+{{ content | safe }}
+    </div>
+  </div>
+  <footer class="wrap story-foot">
+    <a class="more" href="/journal/section/{{ section }}/">More in {{ section | sectionName }}</a>
+    <a class="more" href="/#letter">Get the monthly letter</a>
+  </footer>
+</article>

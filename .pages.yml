@@ -1,0 +1,71 @@
+# Pages CMS (https://app.pagescms.org): the web editor for the journal.
+# Saving a story commits it to main, and Vercel rebuilds the site.
+
+media:
+  input: images/journal
+  output: /images/journal
+  rename: safe
+  categories: [image]
+
+content:
+  - name: journal
+    label: Journal
+    type: collection
+    path: journal/posts
+    exclude: [posts.11tydata.js]
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      primary: title
+      fields: [title, section, date, draft]
+      sort: date
+      order: desc
+    fields:
+      - name: title
+        label: Headline
+        type: string
+        required: true
+      - name: standfirst
+        label: Standfirst
+        description: One or two sentences under the headline. Also shown in link previews.
+        type: text
+      - name: section
+        label: Section
+        type: select
+        required: true
+        options:
+          # Keep in step with _data/sections.js
+          values:
+            - { name: masculinity, label: Masculinity }
+            - { name: health, label: Health }
+            - { name: finance, label: Finance }
+            - { name: art, label: Art }
+            - { name: beauty, label: Beauty }
+            - { name: philosophy, label: Philosophy }
+            - { name: book-of-the-month, label: Book of the Month }
+            - { name: brunch-notes, label: Brunch notes }
+      - name: author
+        label: Author
+        type: string
+      - name: date
+        label: Publish date
+        type: date
+        options:
+          format: yyyy-MM-dd
+      - name: cover
+        label: Cover image
+        description: Landscape works best. Also used for link previews.
+        type: image
+      - name: cover_alt
+        label: Cover description
+        description: What the image shows, for people using screen readers.
+        type: string
+      - name: draft
+        label: Draft
+        description: Stays off the site while this is on. Switch it off and save to publish.
+        type: boolean
+        default: true
+      - name: body
+        label: Story
+        type: rich-text
+        options:
+          format: markdown

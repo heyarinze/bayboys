@@ -1,0 +1,9 @@
+---
+layout: base.njk
+title: Journal
+description: Stories, reading lists and notes from the table.
+listEyebrow: From the table
+listTitle: Journal
+---
+{% set posts = collections.journal %}
+{% include "story-list.njk" %}

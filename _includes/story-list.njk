@@ -1,0 +1,19 @@
+<div class="wrap page-head">
+  <p class="eyebrow">{{ listEyebrow }}</p>
+  <h1 class="page-title">{{ listTitle }}</h1>
+  <ul class="sections" aria-label="Sections">
+    <li><a href="/journal/"{% if page.url == "/journal/" %} aria-current="page"{% endif %}>All</a></li>
+    {%- for s in sections %}
+    <li><a href="/journal/section/{{ s.slug }}/"{% if page.url == "/journal/section/" + s.slug + "/" %} aria-current="page"{% endif %}>{{ s.name }}</a></li>
+    {%- endfor %}
+  </ul>
+</div>
+{% if posts.length %}
+<div class="wrap stories has-lead">
+  {%- for post in posts %}
+  {% include "card.njk" %}
+  {%- endfor %}
+</div>
+{% else %}
+<p class="wrap empty">No stories here yet.</p>
+{% endif %}

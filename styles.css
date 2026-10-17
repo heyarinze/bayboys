@@ -2,21 +2,20 @@
    Layout: one editorial column; the red B logo beside a library "date due"
    card, a dark Book of the Month band with a red cover, then a three-up
    shelf. Colours and the Didone display face take their cue from the logo
-   (#FF3131 and white). Light and dark follow the visitor's system setting. */
+   (#FF3131 and white) on a black ground. */
 
 :root {
-  --paper: #FAF6F1;
-  --card: #FFFFFF;
-  --ink: #1D1717;
-  --muted: #6B5F5C;
-  --rule: #E4D9D2;
-  --red: #FF3131;      /* the logo's red: fills and focus rings */
-  --red-ink: #C41E1E;  /* red for text on paper (5.5:1) */
-  --band: #1D1717;
-  --band-ink: #FAF6F1;
-  --band-muted: #BFB2AC;
+  --paper: #000000;
+  --card: #121010;
+  --ink: #F5F1EC;
+  --muted: #A8A09B;
+  --rule: #2B2525;
+  --red: #FF3131;      /* the logo's red; 5.7:1 on black, so it works as text too */
+  --band: #161212;
+  --band-ink: #F5F1EC;
+  --band-muted: #A8A09B;
   --on-red: #FFFFFF;
-  --shadow: rgba(29, 23, 23, 0.4);
+  --shadow: rgba(0, 0, 0, 0.7);
 
   --display: "Playfair Display", "Bodoni 72", Didot, Georgia, serif;
   --body: "Literata", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
@@ -28,23 +27,7 @@
   --step-2: 1.75rem;
   --step-3: clamp(2rem, 5vw, 2.75rem);
 
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #141010;
-    --card: #1E1818;
-    --ink: #F5EFEA;
-    --muted: #B3A6A0;
-    --rule: #3A302E;
-    --red-ink: #FF6B6B;
-    --band: #2A2120;
-    --band-ink: #F5EFEA;
-    --band-muted: #B3A6A0;
-    --shadow: rgba(0, 0, 0, 0.6);
-    color-scheme: dark;
-  }
+  color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -70,7 +53,7 @@ body {
 
 h1, h2, h3 { text-wrap: balance; margin: 0; }
 p { margin: 0; }
-a { color: var(--red-ink); text-underline-offset: 3px; }
+a { color: var(--red); text-underline-offset: 3px; }
 a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 
 .eyebrow {
@@ -93,7 +76,6 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 .top {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
   gap: 8px 24px;
   padding-block: 20px;
@@ -179,8 +161,8 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.16em;
-  color: var(--red-ink);
-  border: 2px solid var(--red-ink);
+  color: var(--red);
+  border: 2px solid var(--red);
   border-radius: 3px;
   padding: 4px 10px;
   transform: rotate(-5deg);
@@ -297,7 +279,7 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--red-ink);
+  color: var(--red);
 }
 .books cite { font-style: normal; font-weight: 600; }
 .books span:last-child { color: var(--muted); font-size: 0.95rem; }
@@ -355,7 +337,7 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--paper);
-  background: var(--red-ink);
+  background: var(--red);
   border: 0;
   border-radius: 3px;
   padding: 12px 20px;
@@ -385,6 +367,159 @@ footer {
   letter-spacing: 0.04em;
 }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+/* Site nav: on phones the mark and nav share a line, with the place and
+   date under them; from 640px all three sit on one line. */
+.top-nav { order: 2; margin-left: auto; display: flex; gap: 20px; }
+.top-meta { order: 3; flex-basis: 100%; }
+@media (min-width: 640px) {
+  .top-meta { order: 2; flex-basis: auto; margin-left: auto; }
+  .top-nav { order: 3; margin-left: 0; }
+}
+.top-nav a {
+  font-family: var(--type);
+  font-weight: 700;
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  padding-block: 12px;
+  border-bottom: 2px solid transparent;
+}
+.top-nav a:hover, .top-nav a[aria-current="page"] { border-bottom-color: var(--red); }
+
+/* Journal: shared pieces */
+.kicker {
+  font-family: var(--type);
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.kicker a { color: inherit; text-decoration: none; }
+.kicker a:hover { text-decoration: underline; }
+.byline { font-family: var(--type); font-size: var(--step--1); letter-spacing: 0.04em; color: var(--muted); }
+.more {
+  font-family: var(--type);
+  font-weight: 700;
+  font-size: var(--step--1);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+/* Journal: story cards */
+.stories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 48px 32px;
+  padding-bottom: 80px;
+}
+.card { display: grid; gap: 16px; align-content: start; min-width: 0; }
+.card-body { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card-media { display: block; aspect-ratio: 3 / 2; overflow: hidden; background: var(--red); }
+.card-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.card-media.is-blank { display: grid; place-items: center; }
+.card-media.is-blank img { width: 30%; height: auto; }
+.card-title { font-family: var(--display); font-weight: 700; font-size: 1.6rem; line-height: 1.12; }
+.card-title a { color: var(--ink); text-decoration: none; }
+.card-title a:hover { text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; }
+.card-text { color: var(--muted); }
+/* On the journal pages the newest story takes the whole first row */
+@media (min-width: 880px) {
+  .stories.has-lead > .card:first-child {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 40px;
+  }
+  .stories.has-lead > .card:first-child .card-title { font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.05; }
+}
+
+/* Journal: listing pages */
+.page-head { display: grid; gap: 14px; padding-block: 56px 40px; }
+.page-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(3rem, 10vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+.sections { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.sections a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  font-family: var(--type);
+  font-size: var(--step--1);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+}
+.sections a:hover { border-color: var(--ink); }
+.sections a[aria-current="page"] { background: var(--red); border-color: var(--red); color: #000; }
+.empty { color: var(--muted); padding-bottom: 96px; }
+
+/* Homepage: latest from the journal */
+.latest { padding-top: 72px; border-bottom: 1px solid var(--rule); }
+.latest-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: 12px 24px;
+  margin-bottom: 32px;
+}
+
+/* Journal: a story */
+.story-head {
+  max-width: 920px;
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  text-align: center;
+  padding-block: 64px 40px;
+}
+.story-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 7vw, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+.standfirst { font-size: var(--step-1); line-height: 1.45; color: var(--muted); max-width: 46ch; }
+.story-cover { margin: 0 auto 48px; }
+.story-cover img { display: block; width: 100%; height: auto; }
+.story-body { max-width: 68ch; margin-inline: auto; font-size: 1.125rem; line-height: 1.75; padding-bottom: 64px; }
+.story-body > * + * { margin-top: 1.25em; }
+.story-body h2 { font-family: var(--display); font-weight: 700; font-size: 1.85rem; line-height: 1.15; margin-top: 2em; }
+.story-body h3 { font-family: var(--display); font-weight: 700; font-size: 1.35rem; line-height: 1.2; margin-top: 1.75em; }
+.story-body blockquote {
+  margin-inline: 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.3;
+}
+.story-body ul, .story-body ol { padding-left: 1.25em; }
+.story-body li + li { margin-top: 0.4em; }
+.story-body img { display: block; width: 100%; height: auto; }
+.story-body hr { border: 0; border-top: 1px solid var(--rule); margin-block: 2.5em; }
+.story-body a { color: var(--red); }
+.story-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px 32px;
+  border-top: 1px solid var(--rule);
+  padding-block: 32px 72px;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }

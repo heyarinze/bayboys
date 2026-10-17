@@ -1,0 +1,12 @@
+<article class="card">
+  <a class="card-media{% if not post.data.cover %} is-blank{% endif %}" href="{{ post.url }}" tabindex="-1" aria-hidden="true">
+    {%- if post.data.cover %}<img src="{{ post.data.cover }}" alt="" loading="lazy">
+    {%- else %}<img src="/logo-mark.png" alt="" loading="lazy">{% endif -%}
+  </a>
+  <div class="card-body">
+    <p class="kicker"><a href="/journal/section/{{ post.data.section }}/">{{ post.data.section | sectionName }}</a></p>
+    <h3 class="card-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+    {% if post.data.standfirst %}<p class="card-text">{{ post.data.standfirst }}</p>{% endif %}
+    <p class="byline">{% if post.data.author %}{{ post.data.author }} · {% endif %}<time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time></p>
+  </div>
+</article>
