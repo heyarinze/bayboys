@@ -11,10 +11,8 @@ _includes/            shared page shell, story layout and story card
 _data/                site name and address, and the list of sections
 styles.css            all styling
 images/journal/       images uploaded with stories
-logo.png              the Boys Book Brunch logo, shown in the hero
-logo-mark.png         the logo's B on its own, used as the header mark
 favicon.ico           browser tab icon (16, 32 and 48 px, the full logo)
-icon-192.png          high-res tab icon (the full logo)
+icon-192.png          the full logo: header logo (top right) and high-res tab icon
 apple-touch-icon.png  iPhone and iPad home-screen icon (the full logo)
 og.png                default link-preview image; a story uses its own cover
 .pages.yml            settings for the web editor (fields, sections, image folder)

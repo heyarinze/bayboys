@@ -82,7 +82,7 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   padding-top: max(20px, env(safe-area-inset-top, 0px));
   border-bottom: 1px solid var(--rule);
 }
-.mark { display: block; width: 40px; height: 40px; }
+.mark { display: block; flex: none; width: 48px; height: 48px; }
 .mark img { display: block; width: 100%; height: 100%; }
 
 /* Hero */
@@ -93,48 +93,22 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   padding-block: 48px 64px;
 }
 @media (min-width: 880px) {
-  .hero { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: end; gap: 56px; }
+  .hero { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: 56px; }
 }
 .masthead { display: grid; gap: 28px; min-width: 0; }
-/* The logo floats: a slow bob, with a red glow on the "floor" that
-   shrinks and fades as it rises. Reduced-motion visitors get it still. */
-.levitate {
-  position: relative;
-  width: min(100%, 440px);
-  margin-bottom: 20px;
-}
-.levitate img {
-  display: block;
-  width: 100%;
-  height: auto;
-  animation: levitate 6s ease-in-out infinite;
-}
-.levitate::after {
-  content: "";
-  position: absolute;
-  left: 14%;
-  right: 14%;
-  bottom: -30px;
-  height: 22px;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(255, 49, 49, 0.45), rgba(255, 49, 49, 0));
-  animation: levitate-glow 6s ease-in-out infinite;
-}
+/* The hero headline and subtitle float with a slow 10px bob.
+   Reduced-motion visitors get them still. */
+.hero-text { display: grid; gap: 16px; animation: levitate 6s ease-in-out infinite; }
 @keyframes levitate {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
+  50% { transform: translateY(-10px); }
 }
-@keyframes levitate-glow {
-  0%, 100% { transform: scaleX(1); opacity: 1; }
-  50% { transform: scaleX(0.8); opacity: 0.55; }
-}
-.hero-text { display: grid; gap: 12px; }
 .hero-name {
   font-family: var(--display);
   font-weight: 800;
-  font-size: clamp(2.75rem, 7vw, 4.5rem);
-  line-height: 1;
-  letter-spacing: -0.01em;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
 }
 .lede {
   font-size: var(--step-1);
@@ -481,13 +455,16 @@ footer {
 }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
 
-/* Site nav: on phones the mark and nav share a line, with the place and
-   date under them; from 640px all three sit on one line. */
-.top-nav { order: 2; margin-left: auto; display: flex; gap: 20px; }
+/* Site header: the logo sits top right. On phones the nav and logo share
+   the first line with the place and date under them; from 640px all three
+   sit on one line. */
+.top-nav { order: 1; display: flex; gap: 20px; }
+.mark { order: 2; margin-left: auto; }
 .top-meta { order: 3; flex-basis: 100%; }
 @media (min-width: 640px) {
-  .top-meta { order: 2; flex-basis: auto; margin-left: auto; }
-  .top-nav { order: 3; margin-left: 0; }
+  .top-meta { order: 1; flex-basis: auto; }
+  .top-nav { order: 2; margin-left: auto; }
+  .mark { order: 3; margin-left: 0; width: 64px; height: 64px; }
 }
 .top-nav a {
   font-family: var(--type);
@@ -534,7 +511,15 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 .card-media { display: block; aspect-ratio: 3 / 2; overflow: hidden; background: var(--red); }
 .card-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .card-media.is-blank { display: grid; place-items: center; }
-.card-media.is-blank img { width: 30%; height: auto; }
+.card-art {
+  padding-inline: 20px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  text-align: center;
+  color: #000;
+}
 .card-title { font-family: var(--display); font-weight: 700; font-size: 1.6rem; line-height: 1.12; }
 .card-title a { color: var(--ink); text-decoration: none; }
 .card-title a:hover { text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: 2px; }
