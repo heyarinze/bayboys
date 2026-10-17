@@ -3,3 +3,6 @@ bay-boys-book-brunch.zip
 
 # macOS
 .DS_Store
+
+# Local Claude tooling
+.claude/

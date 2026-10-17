@@ -3,10 +3,13 @@
 A one-page static site. No build step, no dependencies.
 
 ```
-index.html    the page
-styles.css    all styling (light and dark follow the visitor's system)
-favicon.svg   browser tab icon
-og.png        link-preview image for WhatsApp, iMessage, X, LinkedIn
+index.html            the page
+styles.css            all styling (light and dark follow the visitor's system)
+logo.png              the Boys Book Brunch logo, shown in the hero
+logo-mark.png         the logo's B on its own: header mark and high-res tab icon
+favicon.ico           browser tab icon (16, 32 and 48 px, the B on its own)
+apple-touch-icon.png  iPhone and iPad home-screen icon (the full logo)
+og.png                link-preview image for WhatsApp, iMessage, X, LinkedIn
 ```
 
 To preview locally, open `index.html` in a browser.
@@ -15,7 +18,7 @@ To preview locally, open `index.html` in a browser.
 
 **From GitHub (recommended, so every push redeploys)**
 
-1. Create a new GitHub repo and add these four files at its root.
+1. Create a new GitHub repo and add these files at its root.
 2. Go to vercel.com/new and import the repo.
 3. Framework preset: **Other**. Leave the build command and output directory empty.
 4. Click **Deploy**.
@@ -28,7 +31,7 @@ npx vercel          # first deploy, answer the setup prompts
 npx vercel --prod   # publish to production
 ```
 
-**After the first deploy:** in `index.html`, replace `https://bay-boys-book-brunch.vercel.app` in the `og:url` and `og:image` tags with your real address (the Vercel URL or your own domain), then redeploy. Link previews need the full address.
+**Link previews:** the `og:url` and `og:image` tags in `index.html` point at `https://www.boysbookbrunch.com`. If the domain changes, update both; previews need the full address.
 
 To use your own domain, add it in the Vercel project under Settings → Domains.
 
