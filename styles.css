@@ -177,30 +177,105 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   padding-block: 56px;
   border-top: 1px solid var(--rule);
 }
-.split.run { padding-bottom: 72px; }
 @media (min-width: 880px) {
   .split { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
 }
 .prose { display: grid; gap: 16px; max-width: 62ch; }
 
-/* Run of show */
-.timeline { list-style: none; margin: 0; padding: 0; display: grid; }
-.timeline li {
+/* Anatomy of a brunch: one 90-minute bar, each block sized by its minutes.
+   Neutral grey steps keep the time order and the conversation, half the
+   brunch, is the one red block. Checked with the dataviz palette validator
+   against #000: grey ramp, adjacent pairs, colour-blind separation and 3:1
+   contrast all pass. */
+.phase-1 { --phase: #5C5C5C; --on-phase: #FFFFFF; }
+.phase-2 { --phase: #8F8F8F; --on-phase: #000000; }
+.phase-3 { --phase: var(--red); --on-phase: #000000; }
+.phase-4 { --phase: #B8B8B8; --on-phase: #000000; }
+.phase-5 { --phase: #F2F2F2; --on-phase: #000000; }
+
+.anatomy {
   display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr);
-  gap: 16px;
-  padding-block: 14px;
-  border-bottom: 1px solid var(--rule);
+  gap: 32px;
+  padding-block: 56px 72px;
+  border-top: 1px solid var(--rule);
 }
-.timeline li:first-child { border-top: 1px solid var(--rule); }
-.timeline time {
+.anatomy-chart { display: grid; gap: 10px; }
+.anatomy-bar { display: flex; gap: 2px; height: 56px; }
+.seg {
+  position: relative;
+  flex: 0 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: flex-end;
+  background: var(--phase);
+  color: var(--on-phase);
   font-family: var(--type);
   font-weight: 700;
+  font-size: var(--step--1);
   font-variant-numeric: tabular-nums;
-  padding-top: 2px;
+  line-height: 1;
+  transition: opacity 0.12s;
 }
-.timeline p { color: var(--muted); }
-.timeline b { font-weight: 600; color: var(--ink); }
+.seg:first-child { border-radius: 4px 0 0 4px; }
+.seg:last-child { border-radius: 0 4px 4px 0; }
+.seg.phase-1, .seg.phase-2 { flex-grow: 15; }
+.seg.phase-3 { flex-grow: 45; }
+.seg.phase-4 { flex-grow: 10; }
+.seg.phase-5 { flex-grow: 5; justify-content: center; }
+/* Padding sits on the label, not the block, so block widths stay exactly
+   proportional to minutes. */
+.seg-min { overflow: hidden; white-space: nowrap; padding: 0 0 8px 8px; }
+.seg.phase-5 .seg-min { padding-left: 0; }
+.tip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  z-index: 1;
+  padding: 6px 10px;
+  border-radius: 3px;
+  background: var(--ink);
+  color: #000;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s;
+}
+.seg.phase-4 .tip, .seg.phase-5 .tip { left: auto; right: 0; }
+.seg:hover .tip { opacity: 1; }
+.anatomy-bar:hover .seg:not(:hover) { opacity: 0.45; }
+.anatomy-scale {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--type);
+  font-size: var(--step--1);
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+.anatomy-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+  gap: 28px 24px;
+}
+.anatomy-list li {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  border-top: 4px solid var(--phase);
+  padding-top: 12px;
+}
+.phase-time {
+  font-family: var(--type);
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+.anatomy-list h3 { font-family: var(--display); font-weight: 700; font-size: 1.35rem; line-height: 1.15; }
+.anatomy-list li > p:last-child { color: var(--muted); }
 
 /* Book of the Month band */
 .band { background: var(--band); color: var(--band-ink); }

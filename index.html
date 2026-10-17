@@ -4,7 +4,7 @@ layout: base.njk
   <section class="wrap hero" id="next">
     <div class="masthead">
       <h1 class="logo"><img src="/logo.png" width="440" height="440" alt="Boys Book Brunch"></h1>
-      <p class="lede">A thinking community for the boys of the Bay. One Sunday a month, one table, one conversation.</p>
+      <p class="lede">A thinking club for boys who love to read.</p>
     </div>
 
     <!-- UPDATE MONTHLY: next brunch card -->
@@ -30,26 +30,58 @@ layout: base.njk
   <section class="wrap split" id="about">
     <div class="h2-group">
       <p class="eyebrow">What this is</p>
-      <h2 class="h2">A table for thinking out loud</h2>
+      <h2 class="h2">A space to think and chill</h2>
     </div>
     <div class="prose">
-      <p>Once a month, six to ten of us sit down for brunch in Oakland and talk about something that matters: being a man, health, money, art, beauty, and how to live.</p>
-      <p>Nobody has to finish a book before brunch. Each month has a Book of the Month to read at your own pace, and a short conversation guide you can get through in an hour or two. It might be an essay, a chapter, a podcast episode or a film. The guide is what we talk about at the table.</p>
-      <p>The table moves to a new spot in Oakland every month, to keep things interesting.</p>
+      <p>Once a month, 6–10 boys sit down for brunch in Oakland and a few other cities across the US to discuss books, essays, poetry, and art.</p>
+      <p>Guests don't need to finish a book before brunch. Each month, we share a 'Book of the Month' to read at your own pace, and a shorter brunch reading you can get through in an hour or two. It might be an essay, a chapter, a podcast episode or a film. The note is what we talk about at the table.</p>
+      <p>To keep things interesting, brunch is hosted at a new spot each month.</p>
     </div>
   </section>
 
-  <section class="wrap split run" id="run">
+  <section class="wrap anatomy" id="run">
     <div class="h2-group">
-      <p class="eyebrow">How a brunch runs</p>
+      <p class="eyebrow">Anatomy of a brunch</p>
       <h2 class="h2">Ninety minutes</h2>
     </div>
-    <ol class="timeline">
-      <li><time>11:00</time><p><b>Plates and coffee.</b> Order, eat, settle in.</p></li>
-      <li><time>11:15</time><p><b>Check-in.</b> A minute each on what's on your mind this week.</p></li>
-      <li><time>11:30</time><p><b>The guide.</b> This month's Chef frames the topic and opens the conversation.</p></li>
-      <li><time>12:15</time><p><b>Takeaways.</b> Everyone names one thing they're leaving with.</p></li>
-      <li><time>12:25</time><p><b>The draw.</b> A name comes out of the hat. That's next month's Chef, who picks the topic and writes the guide.</p></li>
+    <!-- Each block's width is its share of the 90 minutes. The list below
+         carries the same information as text. -->
+    <div class="anatomy-chart" aria-hidden="true">
+      <div class="anatomy-bar">
+        <span class="seg phase-1"><span class="seg-min">15</span><span class="tip">Plates and coffee · 11:00–11:15</span></span>
+        <span class="seg phase-2"><span class="seg-min">15</span><span class="tip">Check-in · 11:15–11:30</span></span>
+        <span class="seg phase-3"><span class="seg-min">45 min</span><span class="tip">The guide · 11:30–12:15</span></span>
+        <span class="seg phase-4"><span class="seg-min">10</span><span class="tip">Takeaways · 12:15–12:25</span></span>
+        <span class="seg phase-5"><span class="seg-min">5</span><span class="tip">The draw · 12:25–12:30</span></span>
+      </div>
+      <div class="anatomy-scale"><span>11:00</span><span>12:30</span></div>
+    </div>
+    <ol class="anatomy-list">
+      <li class="phase-1">
+        <p class="phase-time"><time>11:00</time> · 15 min</p>
+        <h3>Plates and coffee</h3>
+        <p>Order, eat, settle in.</p>
+      </li>
+      <li class="phase-2">
+        <p class="phase-time"><time>11:15</time> · 15 min</p>
+        <h3>Check-in</h3>
+        <p>A minute each on what's on your mind this week.</p>
+      </li>
+      <li class="phase-3">
+        <p class="phase-time"><time>11:30</time> · 45 min</p>
+        <h3>The guide</h3>
+        <p>This month's Chef frames the topic and opens the conversation.</p>
+      </li>
+      <li class="phase-4">
+        <p class="phase-time"><time>12:15</time> · 10 min</p>
+        <h3>Takeaways</h3>
+        <p>Everyone names one thing they're leaving with.</p>
+      </li>
+      <li class="phase-5">
+        <p class="phase-time"><time>12:25</time> · 5 min</p>
+        <h3>The draw</h3>
+        <p>A name comes out of the hat. That's next month's Chef, who picks the topic and writes the guide.</p>
+      </li>
     </ol>
   </section>
 
@@ -125,6 +157,7 @@ layout: base.njk
         <ul class="books">
           <li><span class="kind">Fiction</span><cite>The Moon and Sixpence</cite><span>W. Somerset Maugham · 1919</span></li>
           <li><span class="kind">Non-fiction</span><cite>Ways of Seeing</cite><span>John Berger · 1972</span></li>
+          <li><span class="kind">Non-fiction</span><cite>What Is Art?</cite><span>Leo Tolstoy · 1897</span></li>
         </ul>
       </article>
       <article class="theme">
@@ -139,7 +172,7 @@ layout: base.njk
         <h3>Philosophy</h3>
         <p class="q">How should a man spend a life?</p>
         <ul class="books">
-          <li><span class="kind">Fiction</span><cite>The Stranger</cite><span>Albert Camus · 1942</span></li>
+          <li><span class="kind">Fiction</span><cite>Siddhartha</cite><span>Hermann Hesse · 1922</span></li>
           <li><span class="kind">Non-fiction</span><cite>Meditations</cite><span>Marcus Aurelius · 2nd century</span></li>
         </ul>
       </article>
