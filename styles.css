@@ -196,19 +196,10 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   color: #000;
   font-family: var(--display);
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   line-height: 1;
   text-align: center;
   transform: rotate(-8deg);
-}
-.seal-no {
-  display: block;
-  margin-bottom: 1px;
-  font-family: var(--type);
-  font-weight: 700;
-  font-size: 0.5rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 .envelope-date {
   margin-top: 10px;
