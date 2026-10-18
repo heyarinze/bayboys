@@ -9,17 +9,16 @@ layout: base.njk
       </div>
     </div>
 
-    <!-- UPDATE MONTHLY: next brunch number and date. The RSVP link is in _data/site.json. -->
-    <aside class="due" aria-label="Next brunch">
-      <div class="due-head">
-        <strong>DATE DUE</strong>
-        <span>Brunch No. 001</span>
-      </div>
-      <div class="due-body">
-        <p class="due-date"><time datetime="2026-11-01">Sun 01 Nov 2026</time></p>
-        <a class="due-rsvp" href="{{ site.rsvp }}">RSVP on Partiful</a>
-      </div>
-    </aside>
+    <div class="hero-art">
+      <img class="hero-painting" src="/images/still-life-1200.jpg" srcset="/images/still-life-800.jpg 800w, /images/still-life-1200.jpg 1200w" sizes="(min-width: 880px) 520px, calc(100vw - 32px)" width="1200" height="1200" fetchpriority="high" alt="A still-life painting of old books leaning together on a table with grapes, figs, bread, walnuts and a gold goblet">
+      <!-- UPDATE MONTHLY: next brunch number (on the seal) and date. The RSVP link is in _data/site.json. -->
+      <aside class="envelope" aria-label="Next brunch">
+        <svg class="envelope-flap" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polygon points="0,0 100,0 50,100"/></svg>
+        <p class="envelope-seal"><span class="visually-hidden">Brunch </span><span class="seal-no">No.</span><span>001</span></p>
+        <p class="envelope-date"><time datetime="2026-11-01">Sun 01 Nov 2026</time></p>
+        <a class="envelope-rsvp" href="{{ site.rsvp }}">RSVP on Partiful</a>
+      </aside>
+    </div>
   </section>
 
   <section class="wrap split" id="about">

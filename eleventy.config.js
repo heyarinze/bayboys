@@ -9,9 +9,13 @@ export default function (eleventyConfig) {
     }
   });
 
+  // Site files are listed by name so a stray image dropped in the folder
+  // isn't published by accident. Originals live in source/, unpublished.
   eleventyConfig.addPassthroughCopy("styles.css");
-  eleventyConfig.addPassthroughCopy("*.png");
   eleventyConfig.addPassthroughCopy("favicon.ico");
+  eleventyConfig.addPassthroughCopy("icon-192.png");
+  eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
+  eleventyConfig.addPassthroughCopy("og.png");
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.ignores.add("README.md");
 

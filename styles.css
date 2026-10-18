@@ -93,7 +93,7 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   padding-block: 48px 64px;
 }
 @media (min-width: 880px) {
-  .hero { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: 56px; }
+  .hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 56px; }
 }
 .masthead { display: grid; gap: 28px; min-width: 0; }
 /* The hero headline and subtitle float with a slow 10px bob.
@@ -117,7 +117,7 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   font-size: 1.08em;
   color: var(--red);
 }
-.swap > span { grid-area: 1 / 1; animation: swap-a 5s ease-in-out infinite; }
+.swap > span { grid-area: 1 / 1; animation: swap-a 3.4s ease-in-out infinite; }
 .swap > span + span { animation-name: swap-b; }
 @keyframes swap-a {
   0%, 40%    { transform: translateY(0); opacity: 1; }
@@ -144,53 +144,99 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   text-wrap: balance;
 }
 
-/* Library date-due card */
-.due {
-  background: var(--card);
-  border: 1px solid var(--rule);
-  border-radius: 2px;
-  font-family: var(--type);
-  font-size: 0.95rem;
-  min-width: 0;
-  box-shadow: 0 1px 0 var(--rule), 0 18px 40px -28px var(--shadow);
+/* The painting, with the next-brunch envelope tucked over its lower-right
+   corner like an invitation left on the table. */
+.hero-art { display: grid; min-width: 0; }
+.hero-painting { display: block; width: 100%; height: auto; border-radius: 4px; }
+.hero-painting + .envelope {
+  justify-self: end;
+  margin: -96px 14px 0 0;
+  transform: rotate(3deg);
 }
-.due-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 4px 16px;
-  padding: 16px 20px 12px;
-  border-bottom: 2px solid var(--ink);
+@media (min-width: 880px) {
+  .hero-painting + .envelope { margin-top: -120px; }
 }
-.due-head strong { font-size: 1.05rem; letter-spacing: 0.14em; }
-.due-head span { color: var(--muted); font-size: var(--step--1); letter-spacing: 0.06em; }
-.due-body { display: grid; gap: 20px; padding: 24px 20px; }
-.due-date {
+
+/* Next brunch: a small invitation envelope. The flap is an SVG triangle,
+   and the red wax seal at its tip carries the brunch number. */
+.envelope {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: clamp(210px, 58%, 260px);
+  padding: 0 16px 18px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #F2EBDD;
+  color: #1A1512;
+  box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.8);
+}
+.envelope-flap {
+  display: block;
+  width: calc(100% + 32px);
+  height: auto;
+  aspect-ratio: 10 / 3;
+  overflow: visible;
+  fill: #E6DBC4;
+  stroke: rgba(26, 21, 18, 0.18);
+  filter: drop-shadow(0 3px 3px rgba(26, 21, 18, 0.12));
+}
+.envelope-flap polygon { vector-effect: non-scaling-stroke; }
+.envelope-seal {
+  position: relative;
+  display: grid;
+  place-content: center;
+  width: 46px;
+  height: 46px;
+  margin-top: -23px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 32%, #FF6161, var(--red) 58%, #D42323);
+  box-shadow: 0 0 0 3px rgba(255, 49, 49, 0.3), 0 3px 6px rgba(26, 21, 18, 0.25);
+  color: #000;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 0.85rem;
+  line-height: 1;
+  text-align: center;
+  transform: rotate(-8deg);
+}
+.seal-no {
+  display: block;
+  margin-bottom: 1px;
   font-family: var(--type);
   font-weight: 700;
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.envelope-date {
+  margin-top: 10px;
+  font-family: var(--type);
+  font-weight: 700;
+  font-size: 1.05rem;
   line-height: 1.1;
   letter-spacing: 0.02em;
   font-variant-numeric: tabular-nums;
+  text-align: center;
 }
-.due-rsvp {
-  justify-self: start;
+.envelope-rsvp {
   display: inline-flex;
   align-items: center;
-  min-height: 48px;
-  padding: 0 24px;
+  min-height: 44px;
+  margin-top: 10px;
+  padding: 0 16px;
   border-radius: 999px;
   background: var(--red);
   color: #000;
   font-family: var(--type);
   font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
 }
-.due-rsvp:hover { filter: brightness(1.12); }
+.envelope-rsvp:hover { filter: brightness(1.08); }
+.envelope-rsvp:focus-visible { outline-color: #000; }
 
 /* Two-column sections (about, run of show) */
 .split {
@@ -466,16 +512,15 @@ footer {
 }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
 
-/* Site header: the logo sits top right. On phones the nav and logo share
-   the first line with the place and date under them; from 640px all three
-   sit on one line. */
-.top-nav { order: 1; display: flex; gap: 20px; }
-.mark { order: 2; margin-left: auto; }
+/* Site header: the logo sits top left and the nav top right. On phones the
+   place and date drop to their own line; from 640px all three share one. */
+.mark { order: 1; }
+.top-nav { order: 2; margin-left: auto; display: flex; gap: 20px; }
 .top-meta { order: 3; flex-basis: 100%; }
 @media (min-width: 640px) {
-  .top-meta { order: 1; flex-basis: auto; }
-  .top-nav { order: 2; margin-left: auto; }
-  .mark { order: 3; margin-left: 0; width: 64px; height: 64px; }
+  .mark { width: 64px; height: 64px; }
+  .top-meta { order: 2; flex-basis: auto; }
+  .top-nav { order: 3; }
 }
 .top-nav a {
   font-family: var(--type);

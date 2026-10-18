@@ -11,6 +11,8 @@ _includes/            shared page shell, story layout and story card
 _data/                site name and address, and the list of sections
 styles.css            all styling
 images/journal/       images uploaded with stories
+images/still-life-*   the hero painting, at 800 and 1200 px
+source/               full-size originals (not published)
 favicon.ico           browser tab icon (16, 32 and 48 px, the full logo)
 icon-192.png          the full logo: header logo (top right) and high-res tab icon
 apple-touch-icon.png  iPhone and iPad home-screen icon (the full logo)
@@ -56,7 +58,7 @@ Then open http://localhost:8080. Drafts show up here, but never on the live site
 ## Monthly update
 
 1. **RSVP link**: in `_data/site.json`, set `rsvp` to the next brunch's Partiful link. It feeds both RSVP buttons, the one in the header on every page and the one on the brunch card.
-2. **Next brunch card**: search `index.html` for `UPDATE MONTHLY`. Set the brunch number and the date (both the visible text and the `datetime` value).
+2. **Envelope** (the next-brunch card): search `index.html` for `UPDATE MONTHLY`. Set the brunch number on the seal and the date (both the visible text and the `datetime` value).
 3. **Book of the Month band**: the second `UPDATE MONTHLY` block in `index.html`. Month and theme, title, subtitle, author and year, the short description, and the title on the cover.
 
 Add new picks to **The shelf** by copying an existing `<li>` inside a theme.
