@@ -59,7 +59,7 @@ Then open http://localhost:8080. Drafts show up here, but never on the live site
 
 1. **RSVP link**: in `_data/site.json`, set `rsvp` to the next brunch's Partiful link. It feeds both RSVP buttons, the one in the header on every page and the one on the brunch card.
 2. **Envelope** (the next-brunch card): search `index.html` for `UPDATE MONTHLY`. Set the brunch number on the seal and the date (both the visible text and the `datetime` value).
-3. **Book of the Month band**: the second `UPDATE MONTHLY` block in `index.html`. Month and theme, title, subtitle, author and year, the short description, and the title on the cover.
+3. **Book of the Month band**: the second `UPDATE MONTHLY` block in `index.html`. Month and theme, title, subtitle, author and year, and the short description. Put the book's cover in `images/botm/` and point the band's `<img>` at it (Open Library at covers.openlibrary.org is a good free source).
 
 Add new picks to **The shelf** by copying an existing `<li>` inside a theme.
 

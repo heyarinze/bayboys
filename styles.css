@@ -359,25 +359,13 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 }
 .band .eyebrow { color: var(--band-muted); }
 .cover {
+  display: block;
   width: 180px;
   max-width: 100%;
-  aspect-ratio: 2 / 3;
-  background: var(--red);
-  color: var(--on-red);
-  border-radius: 2px 6px 6px 2px;
-  padding: 18px 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: inset 6px 0 0 rgba(0, 0, 0, 0.16), 0 22px 40px -24px rgba(0, 0, 0, 0.6);
+  height: auto;
+  border-radius: 2px 4px 4px 2px;
+  box-shadow: 0 22px 40px -20px rgba(0, 0, 0, 0.8);
 }
-.cover-title {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 1.75rem;
-  line-height: 1;
-}
-.cover-author { font-family: var(--type); font-size: var(--step--1); letter-spacing: 0.08em; }
 .botm-text { display: grid; gap: 14px; max-width: 60ch; }
 .botm-title {
   font-family: var(--display);
