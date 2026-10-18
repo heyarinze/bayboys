@@ -38,7 +38,7 @@ content:
             - { name: masculinity, label: Masculinity }
             - { name: health, label: Health }
             - { name: money, label: Money }
-            - { name: art-and-beauty, label: "Art & beauty" }
+            - { name: art, label: Art }
             - { name: philosophy, label: Philosophy }
             - { name: technology, label: Technology }
             - { name: book-of-the-month, label: Book of the Month }
