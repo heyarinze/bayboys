@@ -2,7 +2,7 @@
 export default [
   { slug: "masculinity", name: "Masculinity" },
   { slug: "health", name: "Health" },
-  { slug: "personal-finance", name: "Personal finance" },
+  { slug: "money", name: "Money" },
   { slug: "art-and-beauty", name: "Art & beauty" },
   { slug: "philosophy", name: "Philosophy" },
   { slug: "technology", name: "Technology" },

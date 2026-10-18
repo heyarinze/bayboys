@@ -37,7 +37,7 @@ content:
           values:
             - { name: masculinity, label: Masculinity }
             - { name: health, label: Health }
-            - { name: personal-finance, label: Personal finance }
+            - { name: money, label: Money }
             - { name: art-and-beauty, label: "Art & beauty" }
             - { name: philosophy, label: Philosophy }
             - { name: technology, label: Technology }
