@@ -37,10 +37,10 @@ content:
           values:
             - { name: masculinity, label: Masculinity }
             - { name: health, label: Health }
-            - { name: finance, label: Finance }
-            - { name: art, label: Art }
-            - { name: beauty, label: Beauty }
+            - { name: personal-finance, label: Personal finance }
+            - { name: art-and-beauty, label: "Art & beauty" }
             - { name: philosophy, label: Philosophy }
+            - { name: technology, label: Technology }
             - { name: book-of-the-month, label: Book of the Month }
             - { name: brunch-notes, label: Brunch notes }
       - name: author

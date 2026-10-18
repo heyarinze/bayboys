@@ -2,10 +2,10 @@
 export default [
   { slug: "masculinity", name: "Masculinity" },
   { slug: "health", name: "Health" },
-  { slug: "finance", name: "Finance" },
-  { slug: "art", name: "Art" },
-  { slug: "beauty", name: "Beauty" },
+  { slug: "personal-finance", name: "Personal finance" },
+  { slug: "art-and-beauty", name: "Art & beauty" },
   { slug: "philosophy", name: "Philosophy" },
+  { slug: "technology", name: "Technology" },
   { slug: "book-of-the-month", name: "Book of the Month" },
   { slug: "brunch-notes", name: "Brunch notes" },
 ];
