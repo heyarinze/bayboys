@@ -42,7 +42,7 @@ Stories are written in [Pages CMS](https://pagescms.org), a free web editor that
 Good to know:
 
 - Every save is a commit to `main`, and every commit to `main` redeploys the site.
-- A story's address is `/journal/` plus its headline, for example `/journal/the-will-to-change/`, so two stories can't share a headline.
+- A story's address is `/journal/` plus its headline, for example `/journal/consciencism/`, so two stories can't share a headline.
 - Keep cover images under about 1 MB. Landscape works best.
 - To add or rename a section, change both `_data/sections.js` and the section list in `.pages.yml`.
 
