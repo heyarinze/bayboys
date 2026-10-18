@@ -252,6 +252,59 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 }
 .prose { display: grid; gap: 16px; max-width: 62ch; }
 
+/* Why brunch: one big line that edits itself, its first drafts struck
+   through in red pen and the real answer in the hero's red italic. The
+   finished edit is the resting state; .is-drafting (set by script until
+   the line is in view) holds it back so the strikes draw in one by one. */
+.why {
+  display: grid;
+  gap: 24px;
+  padding-block: 64px 72px;
+  border-top: 1px solid var(--rule);
+}
+.why-line {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2.25rem, 6.5vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  max-width: 20ch;
+}
+.why-line s {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.3s;
+}
+.why-line s::after {
+  content: "";
+  position: absolute;
+  left: -0.06em;
+  right: -0.06em;
+  top: 54%;
+  height: 0.08em;
+  border-radius: 0.04em;
+  background: var(--red);
+  transform: rotate(-4deg) scaleX(1);
+  transform-origin: left center;
+  transition: transform 0.35s ease-out;
+}
+.why-line em {
+  display: inline-block;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--red);
+  transition: opacity 0.4s, transform 0.4s;
+}
+.why-line s:nth-of-type(2), .why-line s:nth-of-type(2)::after { transition-delay: 0.45s; }
+.why-line s:nth-of-type(3), .why-line s:nth-of-type(3)::after { transition-delay: 0.9s; }
+.why-line em { transition-delay: 1.35s; }
+.why-line.is-drafting s { color: var(--ink); }
+.why-line.is-drafting s::after { transform: rotate(-4deg) scaleX(0); }
+.why-line.is-drafting em { opacity: 0; transform: translateY(0.25em); }
+
 /* Anatomy of a brunch: one 90-minute bar, each block sized by its minutes.
    Neutral grey steps keep the time order and the conversation, half the
    brunch, is the one red block. Checked with the dataviz palette validator
