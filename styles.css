@@ -344,7 +344,6 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   color: var(--muted);
 }
 .anatomy-list h3 { font-family: var(--display); font-weight: 700; font-size: 1.35rem; line-height: 1.15; }
-.anatomy-list li > p:last-child { color: var(--muted); }
 
 /* Book of the Month band */
 .band { background: var(--band); color: var(--band-ink); }
