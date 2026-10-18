@@ -14,7 +14,8 @@ images/journal/       images uploaded with stories
 images/still-life-*   the hero painting, at 800 and 1200 px
 source/               full-size originals (not published)
 favicon.ico           browser tab icon (16, 32 and 48 px, the full logo)
-icon-192.png          the full logo: header logo (top right) and high-res tab icon
+icon-192.png          the full logo on red: high-res tab icon
+logo-white.png        the white wordmark on transparent: header logo (top left)
 apple-touch-icon.png  iPhone and iPad home-screen icon (the full logo)
 og.png                default link-preview image; a story uses its own cover
 .pages.yml            settings for the web editor (fields, sections, image folder)
