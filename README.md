@@ -68,6 +68,10 @@ Add new picks to **The shelf** by copying an existing `<li>` inside a theme.
 
 Search for `NEWSLETTER` in `index.html`. The sign-up form posts to a Google Form: replace `FORM_ID` in the form's `action`, and `entry.NAME_ID` and `entry.EMAIL_ID` with that form's field IDs. Until then the form shows "Sign-up opens soon."
 
+## WhatsApp group
+
+The "Join the WhatsApp group" button, under the mailing list sign-up, uses the invite link in `_data/site.json` (`whatsapp`). If you reset the group's invite link in WhatsApp, paste the new one there.
+
 ## Link previews
 
 The `og:url` and `og:image` tags point at `https://www.boysbookbrunch.com` (set in `_data/site.json`). If the domain changes, update it there.
