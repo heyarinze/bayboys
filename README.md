@@ -55,10 +55,9 @@ Then open http://localhost:8080. Drafts show up here, but never on the live site
 
 ## Monthly update
 
-Search `index.html` for `UPDATE MONTHLY`. There are two blocks:
-
-1. **Next brunch card**: brunch number, date, place and address, book.
-2. **Book of the Month band**: month and theme, title, subtitle, author and year, the short description, and the title on the cover.
+1. **RSVP link**: in `_data/site.json`, set `rsvp` to the next brunch's Partiful link. It feeds both RSVP buttons, the one in the header on every page and the one on the brunch card.
+2. **Next brunch card**: search `index.html` for `UPDATE MONTHLY`. Set the brunch number and the date (both the visible text and the `datetime` value).
+3. **Book of the Month band**: the second `UPDATE MONTHLY` block in `index.html`. Month and theme, title, subtitle, author and year, the short description, and the title on the cover.
 
 Add new picks to **The shelf** by copying an existing `<li>` inside a theme.
 

@@ -9,22 +9,15 @@ layout: base.njk
       </div>
     </div>
 
-    <!-- UPDATE MONTHLY: next brunch card -->
+    <!-- UPDATE MONTHLY: next brunch number and date. The RSVP link is in _data/site.json. -->
     <aside class="due" aria-label="Next brunch">
       <div class="due-head">
         <strong>DATE DUE</strong>
         <span>Brunch No. 001</span>
       </div>
-      <dl>
-        <div class="due-row"><dt>Date</dt><dd>Sun 01 Nov 2026</dd></div>
-        <div class="due-row"><dt>Time</dt><dd>11:00 – 12:30</dd></div>
-        <div class="due-row"><dt>Place</dt><dd>Drake's Dealership<small>2325 Broadway, Uptown Oakland</small></dd></div>
-        <div class="due-row"><dt>Seats</dt><dd>6 – 10, by invitation</dd></div>
-        <div class="due-row"><dt>Book</dt><dd>The Will to Change<small>bell hooks</small></dd></div>
-      </dl>
-      <div class="due-foot">
-        <span>New spot in Oakland every month</span>
-        <span class="stamp">NEXT TABLE</span>
+      <div class="due-body">
+        <p class="due-date"><time datetime="2026-11-01">Sun 01 Nov 2026</time></p>
+        <a class="due-rsvp" href="{{ site.rsvp }}">RSVP on Partiful</a>
       </div>
     </aside>
   </section>
