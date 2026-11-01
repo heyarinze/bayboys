@@ -66,7 +66,7 @@ Add new picks to **The shelf** by copying an existing `<li>` inside a theme.
 
 ## Newsletter
 
-Search for `NEWSLETTER` in `index.html`. The sign-up form posts to a Google Form: replace `FORM_ID` in the form's `action`, and `entry.NAME_ID` and `entry.EMAIL_ID` with that form's field IDs. Until then the form shows "Sign-up opens soon."
+The sign-up form (search `index.html` for `NEWSLETTER`) posts to the **Boys Book Brunch mailing list** Google Form in your Drive. Each sign-up (name, email, and location as City, Country) lands in the form's linked Google Sheet. If you add, remove or rename questions in the form, the field IDs in `index.html` need updating to match.
 
 ## WhatsApp group
 
